@@ -83,3 +83,7 @@ Like `blue.xsl`, the XSLT has explanatory comments, but please ask.
 ## Solution 3: Combining the phases in sequence instead of in parallel
 
 ## Solution 4: A non-XProc Solution (XSLT 3.0)
+
+## Solution 5: An all-XProc Solution
+
+XSLT can be embedded in XProc, and 'blue' can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc.
