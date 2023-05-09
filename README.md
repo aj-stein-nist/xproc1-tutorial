@@ -10,7 +10,7 @@ In all cases, attention will be paid not only to XProc 1.0 solutions, but also t
 
 XProc is an *XML pipelining technology*. This is a generic name for any XML technology or application that relies on multiple phases of data processing, in which single or  multiple resources are marshalled, arranged and processed to produce single or multiple results (outputs). It is the *multiple* phases that make the difference here, although a pipeline with a single process is of course possible and normal. The ends of pipelines may *either* be related to the processing environment, as endpoints for reading or writing data, *or* they may be connected to other pipelines into larger pipelines that are similarly both *connectable* and *composable*.
 
-Thus pipelines are made of pipelines, a theoretical observation that is reflected in the design of the XML stack including XSLT as a functional, side-effect free language, designed specifically (among other requirements) to serve the needs of this kind of technology, both in itself and as a component of a larger system. Although XSLT can indeed arrange, orchestrate and implement pipeline-based logic internally, using XProc instead, managing the processing phases from a higher-level view, provides a number of distinct advantages:
+Thus pipelines -- both conceptually, and in many implementations -- are made of pipelines -- just as build processes are made of build processes. This theoretical observation (which predates XML) is reflected in the design of the XML stack including XSLT as a functional, side-effect free language, designed specifically (among other requirements) to serve the needs of this kind of technology, both in itself and as a component of a larger system. Although XSLT can indeed arrange, orchestrate and implement pipeline-based logic internally, using XProc instead, managing the processing phases from a higher-level view, provides a number of distinct advantages:
 
 - Relative transparency - easier to see how everything fits
 - Easier debugging - processes are more easily isolated, with benefits in SOC including reusability
@@ -56,5 +56,16 @@ XProc 3.0 also introduces many syntactic improvements making it easier to write 
 
 The [Requirements document for XProc beyond capabilities of XProc 1.0]( https://www.w3.org/XML/XProc/docs/langreq-v2.html) was published in 2012, only two years after the 1.0 technology was released as a Recommendation. XProc 3.0 exists for the same reasons as all 3.0 (or even 2.0) technologies exist - namely, in part, as a reflection of the limitations of XProc 1.0. Knowing these limitations is key to understanding both technologies. The requirements document offers a fair and comprehensive summary of the capabilities that were thought needed - significantly including those that XProc 1.0 did not offer.
 
+## Xproc Implementations
+
+Even apart from other approaches to pipelining, there have been many implementations of XProc and its predecessor technologies. We list only the ones we know of and use - please notify us if there is a *currently used and supported* processor that should be added to the list (even if only partially complete or conformant), or *if you know of any other such lists we should know about*.
+
+### XProc 1.0
+
+#### XML Calabash
+
+### XProc 3.0
+
+#### Morgana XProc
 
 

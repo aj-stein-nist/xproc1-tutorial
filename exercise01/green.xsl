@@ -47,7 +47,8 @@
         </map>
     </xsl:template>
 
-    <!-- The template matching *both" author *and* title (so, either)-->
+    <!-- The template matching *both* author *and* title (so, either) -->
+    <!-- "author | title" is short for "child::author union child::title"-->
     <xsl:template match="author | title">
         <!-- Curly braces in attributes in LREs are Attribute Value Templates (AVTs). -->
         <string key="{ local-name() }">
