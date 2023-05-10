@@ -58,7 +58,9 @@ Subordinate goals:
 
 In the following exercise, we refer to the first XSLT transformation as 'blue' (inserting the XML into a `library`), while the second one is 'green' (converting the XML to some JSON).
 
-### Process 'Blue': XSLT Producing XML
+### Components
+
+#### Process 'Blue': XSLT Producing XML
 
 [blue.xsl](blue.xsl) will copy XML provided to it and wrap it in a new `library` element. None of the XML elements (in or out) are assigned to a namespace. It is XSLT 3.0 because of the nice support for a *modified identity transformation* such as this one.
 
@@ -70,20 +72,36 @@ If not clear on how to test this, please ask!
 
 A discussion on implementation strategy and choices in view of (possible) process requirements is also left aside.
 
-### Process 'Green': XSLT producing JSON
+#### Process 'Green': XSLT producing JSON
 
 An XSLT file is available as [green.xsl](green.xsl). It is XSLT 3.0, as needed to use the function to produce JSON syntax.
 
 Like `blue.xsl`, the XSLT has explanatory comments, but please ask.
 
-## Solution 1, phase 3: XProc 1.0 combining phases 1 and 2
+### Solution 1: XProc 1.0 combining phases 1 and 2
 
-## Solution 2: Using ports instead of hard-coded end points
+Combining blue and green into one runtime, using `p:document` to read XML and `p:store` to save results. Glorified batch processor.
 
-## Solution 3: Combining the phases in sequence instead of in parallel
+### Solution 2: Using ports instead of hard-coded end points
 
-## Solution 4: A non-XProc Solution (XSLT 3.0)
+Using `p:input` and `p:output` to define ports.
 
-## Solution 5: An all-XProc Solution
+### Solution 3: Combining the phases in sequence instead of in parallel
 
-XSLT can be embedded in XProc, and 'blue' can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc.
+Neater and probably more efficient.
+
+### Solution 4: A non-XProc approach
+
+XSLT 3.0 has everything we need to do this without XProc.
+
+### Solution 5: An all-XProc approach
+
+XSLT can be embedded in XProc, and 'blue' can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc with no external XSLTs or other dependencies.
+
+### Solution 6: XProc 3.0
+
+XProc 3.0 offers more compact syntax.
+
+Embedded XSLT works well in this scenario.
+
+Also it would be interesting to see multiple XProcs (for reuse), as for example the JSON conversion could make a discrete step.
