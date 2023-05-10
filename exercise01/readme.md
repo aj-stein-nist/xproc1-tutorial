@@ -56,8 +56,6 @@ Subordinate goals:
 
 3. Exposure to some necessary 'ceremony' and arcana relating to XML, XProc, XSLT and JSON
 
-In the following exercise, we refer to the first XSLT transformation as 'blue' (inserting the XML into a `library`), while the second one is 'green' (converting the XML to some JSON).
-
 ### Components
 
 #### `lib-wrapper` XSLT Producing XML
