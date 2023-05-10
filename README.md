@@ -18,7 +18,7 @@ Thus pipelines -- both conceptually, and in many implementations -- are made of 
 - Standard interfaces for I/O - XProc is designed for multiplicative I/O and supports the range of file and format types better than unassisted XSLT - these standard interfaces help ease integration
 - Scalability - as supported by its higher-level abstraction, XProc should provide XSLT with enhanced scalability both horizontally and vertically - working with both large and small datasets and addressing both complex and relatively simple processing requirements
 
-[^xmlstack] Broadly including XML, XSD, W3C DOM, XDM/XPath, XQuery, XSLT, and associated and ancillary public specifications (<q>standards</q>) supported by available tools.
+[^xmlstack]: Broadly including XML, XSD, W3C DOM, XDM/XPath, XQuery, XSLT, and associated and ancillary public specifications (<q>standards</q>) supported by available tools.
 
 ## XProc Background
 
