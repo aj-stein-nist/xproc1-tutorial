@@ -5,19 +5,14 @@
     <!-- For any XSLT processes we have to designate how to bind parameters, if any. -->
     <p:input port="parameters" kind="parameter"/>
     
-<!-- Everything in this version is hard-coded to
-        read and parse from the file system using p:document
-        write back to the file system using p:store
-        
-     We are relying on runtime configurations to see to it that ...
-       documents are resolved (relative to the XProc)
-       artifacts produced or written go to the right place
-    -->
+    <!-- This is the same as solution1.xsl except it loads the source only once,
+         not once again for every XSLT. -->
+    
+    <!-- p:load is simply a call to read and parse an XML document into the pipeline.   -->
+    <p:load name="books-in" href="books.xml"/>
+
 
     <p:xslt>
-        <p:input port="source">
-            <p:document href="books.xml"/>
-        </p:input>
         <p:input port="stylesheet">
             <p:document href="lib-wrapper.xsl"/>
         </p:input>
@@ -25,11 +20,10 @@
     
     <p:store href="book-lib.xml"/>
 
-
-    <!-- Parsing and loading that same document a second time is extra work -->
+    <!-- Instead of parsing again we can go back to the 'books-in' step. -->
     <p:xslt>
         <p:input port="source">
-            <p:document href="books.xml"/>
+            <p:pipe port="result" step="books-in"/>
         </p:input>
         <p:input port="stylesheet">
             <p:document href="json-mapper.xsl"/>
