@@ -137,8 +137,10 @@ Additionally to providing some interesting and useful syntax, the XSLT in this  
 
 ### Solution 6: XProc 3.0
 
+TBD! Please let us know if you have this.
+
 XProc 3.0 offers more compact syntax.
 
-Embedded XSLT works well in this scenario.
+Embedded XSLT should also work well in this scenario.
 
 Also it would be interesting to see multiple XProcs (for reuse), as for example the JSON conversion could make a discrete step.
