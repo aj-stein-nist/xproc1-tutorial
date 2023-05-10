@@ -133,6 +133,8 @@ Method 1 basically amounts to treating XSLT as a general-purpose functional lang
 
 XSLT can be embedded in XProc, and 'blue' can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc with no external XSLTs or other dependencies.
 
+Additionally to providing some interesting and useful syntax, the XSLT in this  example differs in a couple of important respects from [json-mapper.xsl](json-mapper.xsl) - it has been "hardened" so as not to be as tolerant of 'garbage' (or more generally, unexpected and unspecified) inputs. Compare and test by probing and running the code.
+
 ### Solution 6: XProc 3.0
 
 XProc 3.0 offers more compact syntax.

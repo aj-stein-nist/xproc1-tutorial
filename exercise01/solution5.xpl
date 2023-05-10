@@ -45,7 +45,9 @@
 <!-- The XProc 'wrap' step can do some ad-hoc matching and wrapping - as it happens,
      here is to the effect we want. The p:wrap-sequence step, which instead of matching
      simply wraps a sequence of documents into one, is another possibility here.-->
-    <p:wrap name="make-library" match="books" wrapper="library"/>
+    
+<!-- A subtle but important difference between '/books' and 'books' here   -->
+    <p:wrap name="make-library" match="/books" wrapper="library"/>
     
     <p:add-attribute match="library" attribute-name="id" attribute-value="1"/>
     
@@ -60,6 +62,10 @@
 
                     <xsl:variable name="indenting" select="map {'indent': true()}"/>
 
+                    <xsl:template match="*">
+                        <null key="{ local-name() }"/>
+                    </xsl:template>
+                    
                     <xsl:template match="/">
                         <xsl:variable name="json-xml">
                             <map>
@@ -78,6 +84,10 @@
                         </json>
                     </xsl:template>
 
+                    <xsl:template match="/library">
+                        <xsl:apply-templates/>
+                    </xsl:template>
+                    
                     <xsl:template match="books">
                         <array key="books">
                             <xsl:apply-templates/>
