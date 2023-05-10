@@ -15,26 +15,30 @@
          to a variable, $me, and then processes this by calling a function, xml-to-json($me)
          to produce a (JSON) serialized result. -->
     <xsl:template match="/">
-        <!-- A document element is provided as 'insulation' since under XProc 1.0 everything
-        must come out as XML - a serializer can strip this. -->
-        <json>
+        <!-- A variable holds the result of casting -->
         <xsl:variable name="json-xml">
             <!-- Single element ensures results are all in one. -->
+            <!-- All unprefixed LRE names inherit their namespace from /xsl:stylesheet -->
             <map>
                 <xsl:apply-templates/>
             </map>
         </xsl:variable>
-        <!-- xsl:try helps with debugging, and may be useful for uncontrolled inputs
-             $json-xml can also be inspected in other ways of course -->
-        <!-- See https://www.w3.org/TR/xslt-30/#element-try -->
-        <xsl:try>
-            <xsl:sequence select="xml-to-json($json-xml, $indenting)"/>
-            <xsl:catch expand-text="true" xmlns:err="http://www.w3.org/2005/xqt-errors">
-                <xsl:message>FAILURE WRITING JSON SYNTAX {$err:code}: {$err:description
-                    } - reported at line {$err:line-number}, col {$err:column-number}</xsl:message>
-                <xsl:message>{ serialize($json-xml, $indenting) }</xsl:message>
-            </xsl:catch>
-        </xsl:try>
+        
+        <!-- A document element is provided as 'insulation' since under XProc 1.0 everything
+        must come out as XML - a serializer can strip this. -->
+        
+        <json>
+            <!-- xsl:try helps with debugging, and may be useful for uncontrolled inputs
+                 $json-xml can also be inspected in other ways of course -->
+            <!-- See https://www.w3.org/TR/xslt-30/#element-try -->
+            <xsl:try>
+                <xsl:sequence select="xml-to-json($json-xml, $indenting)"/>
+                <xsl:catch expand-text="true" xmlns:err="http://www.w3.org/2005/xqt-errors">
+                    <xsl:message>FAILURE WRITING JSON SYNTAX {$err:code}: {$err:description } -
+                        reported at line {$err:line-number}, col {$err:column-number}</xsl:message>
+                    <xsl:message>{ serialize($json-xml, $indenting) }</xsl:message>
+                </xsl:catch>
+            </xsl:try>
         </json>
     </xsl:template>
 

@@ -10,14 +10,15 @@ In all cases, attention will be paid not only to XProc 1.0 solutions, but also t
 
 XProc is an *XML pipelining technology*. This is a generic name for any XML technology or application that relies on multiple phases of data processing, in which single or  multiple resources are marshalled, arranged and processed to produce single or multiple results (outputs). It is the *multiple* phases that make the difference here, although a pipeline with a single process is of course possible and normal. The ends of pipelines may *either* be related to the processing environment, as endpoints for reading or writing data, *or* they may be connected to other pipelines into larger pipelines that are similarly both *connectable* and *composable*.
 
-Thus pipelines -- both conceptually, and in many implementations -- are made of pipelines -- just as build processes are made of build processes. This theoretical observation (which predates XML) is reflected in the design of the XML stack including XSLT as a functional, side-effect free language, designed specifically (among other requirements) to serve the needs of this kind of technology, both in itself and as a component of a larger system. Although XSLT can indeed arrange, orchestrate and implement pipeline-based logic internally, using XProc instead, managing the processing phases from a higher-level view, provides a number of distinct advantages:
+Thus pipelines -- both conceptually, and in many implementations -- are made of pipelines -- just as build processes are made of build processes. This theoretical observation (which predates XML) is reflected in the design of the XML stack[^xmlstack] including XSLT as a functional, side-effect free language, designed specifically (among other requirements) to serve the needs of this kind of technology, both in itself and as a component of a larger system. Although XSLT can indeed arrange, orchestrate and implement pipeline-based logic internally, using XProc instead, managing the processing phases from a higher-level view, provides a number of distinct advantages:
 
 - Relative transparency - easier to see how everything fits
 - Easier debugging - processes are more easily isolated, with benefits in SOC including reusability
-- Additional functionalities not supported by XSLT natively, such as XSD or JSON Schema validation
+- Additional functionalities not supported by XSLT natively (or only with external libraries), such as XSD, RNG, Schematron or JSON Schema validation
 - Standard interfaces for I/O - XProc is designed for multiplicative I/O and supports the range of file and format types better than unassisted XSLT - these standard interfaces help ease integration
 - Scalability - as supported by its higher-level abstraction, XProc should provide XSLT with enhanced scalability both horizontally and vertically - working with both large and small datasets and addressing both complex and relatively simple processing requirements
 
+[^xmlstack] Broadly including XML, XSD, W3C DOM, XDM/XPath, XQuery, XSLT, and associated and ancillary public specifications (<q>standards</q>) supported by available tools.
 
 ## XProc Background
 
@@ -26,14 +27,16 @@ Thus pipelines -- both conceptually, and in many implementations -- are made of 
   - tutorial and reference at https://www.data2type.de/en/xml-xslt-xslfo/xproc
   - http://dh.obdurodon.org/xproc-tutorial.xhtml
   - https://ehennum.wordpress.com/2010/09/10/starting-xproc/
-- [Requirements document for XProc beyond capabilities of XProc 1.0]( https://www.w3.org/XML/XProc/docs/langreq-v2.html) 2012
+- [Requirements document for XProc beyond capabilities of XProc 1.0]( https://www.w3.org/XML/XProc/docs/langreq-v2.html) (2012)
 - XProc.org links on [Learning XProc 3.0](https://xproc.org/learning.html)
 - [XProc 3.0 and Related Specifications (links)](https://xproc.org/specifications.html)
 - [XProc 3.0 Test suite](https://xproc.org/test-suite.html) includes many examples
 
 ## Non-XProc Pipelining Solutions
 
-*Amongst our weapons* are such *diverse methods as* ...
+Pipelining as a generalized approach to data processing is much older than XProc, and there have been and are many ways of achieving pipelining on current systems, that are not dependent on XProc, offering different feature sets and (more importantly) being suited to different environments and use cases.
+
+In the following, the term *step* is used in the XProc sense, as a discrete operation serviceable as a 'black box', to be combined with other steps in sequences reflecting logical dependencies.
 
 - Reading and writing steps to the file system using scripts
 - Reading and writing steps to the file system using `make` or other build utility

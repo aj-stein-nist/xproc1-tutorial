@@ -116,6 +116,19 @@ XSLT 3.0 has everything we need to do this without XProc.
 
 This Solution is left as an exercise for the reader.
 
+<details><summary>Hints</summary>
+
+At least two different ways to do this:
+
+- Integrate logic with modes and pipeline processes internally - so a single/discrete XSLT transformation includes **reduce** along with **filter** and **map** operations
+- Use XPath 3.0 `transform()` to invoke and apply external XSLTs as discrete function calls
+
+The tradeoffs between these approaches are similar to the XProc tradeoffs.
+
+Method 1 basically amounts to treating XSLT as a general-purpose functional language (which it can be), and solving the problem there. Method 2 amounts to reverse engineering XProc or the functional equivalent (subset) in XSLT and using that. To a large degree the tradeoffs here have to do with transparency as well as both process and resource (especially XSLT resource) maintenance and reuse. XSLT for these applications can be both elegant and performant -- but as it grows in complexity eventually it turn into its own variant XProc-alike 4GL, so why not just implement XProc? etc.
+
+</details>
+
 ### Solution 5: An all-XProc approach
 
 XSLT can be embedded in XProc, and 'blue' can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc with no external XSLTs or other dependencies.
