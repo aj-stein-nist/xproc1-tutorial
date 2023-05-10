@@ -27,10 +27,12 @@ Thus pipelines -- both conceptually, and in many implementations -- are made of 
   - tutorial and reference at https://www.data2type.de/en/xml-xslt-xslfo/xproc
   - http://dh.obdurodon.org/xproc-tutorial.xhtml
   - https://ehennum.wordpress.com/2010/09/10/starting-xproc/
+  - Useful synopsis of steps athttps://www.xfront.com/xproc/steps/index.html 
 - [Requirements document for XProc beyond capabilities of XProc 1.0]( https://www.w3.org/XML/XProc/docs/langreq-v2.html) (2012)
 - XProc.org links on [Learning XProc 3.0](https://xproc.org/learning.html)
 - [XProc 3.0 and Related Specifications (links)](https://xproc.org/specifications.html)
 - [XProc 3.0 Test suite](https://xproc.org/test-suite.html) includes many examples
+
 
 ## Non-XProc Pipelining Solutions
 
@@ -40,14 +42,14 @@ In the following, the term *step* is used in the XProc sense, as a discrete oper
 
 - Reading and writing steps to the file system using scripts
 - Reading and writing steps to the file system using `make` or other build utility
-- Apache Ant (XML-based build utility for Java)
-- Pipelining XML parse event streams e.g. Apache Cocoon (server-side XML processing framework)
-- Building and processing document models e.g. DOM-based pipelining (XSLT 1.0)
+- [Apache Ant](https://ant.apache.org/) (XML-based build utility for Java)
+- Pipelining XML parse event streams e.g. [Apache Cocoon](https://cocoon.apache.org/) (XML-based web services framework)
+- Building and processing document models e.g. DOM-based pipelining in Java or .NET
 - IDEs such as oXygen (transformation scenarios)
+- XQuery
 - Pure XSLT, either internally (via temporary trees) or using XPath 3.0 `transform()` function (Saxon)
 
 Others? what have we not mentioned?
-
 
 ## XProc 3.0 Background
 
@@ -65,10 +67,9 @@ Even apart from other approaches to pipelining, there have been many implementat
 
 ### XProc 1.0
 
-#### XML Calabash
+- [XML Calabash](https://xmlcalabash.com/) is maintained by Norman Walsh.
 
 ### XProc 3.0
 
-#### Morgana XProc
-
+- [MorganaXProc-IIIse](https://www.xml-project.com/morganaxproc-iiise.html) is maintained by Achim Berndzen.
 

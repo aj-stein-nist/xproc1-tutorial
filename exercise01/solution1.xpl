@@ -2,6 +2,12 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
     xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0">
     
+    <!--
+        Invoke like this:
+    
+        $ ../mvn-xmlcalabash.sh solution1.xpl
+    
+    -->
     <!-- For any XSLT processes we have to designate how to bind parameters, if any. -->
     <p:input port="parameters" kind="parameter"/>
     
@@ -25,8 +31,7 @@
     
     <p:store href="book-lib.xml"/>
 
-
-    <!-- Parsing and loading that same document a second time is extra work -->
+    <!-- Parsing and loading that same document a second time -->
     <p:xslt>
         <p:input port="source">
             <p:document href="books.xml"/>
@@ -37,6 +42,5 @@
     </p:xslt>
     
     <p:store href="books.json" method="text"/>
-    
     
 </p:declare-step>

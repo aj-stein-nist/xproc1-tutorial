@@ -2,6 +2,12 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
     xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0">
     
+    <!--
+        Invoke like this:
+    
+        $ ../mvn-xmlcalabash.sh solution1a.xpl
+    
+    -->
     <!-- For any XSLT processes we have to designate how to bind parameters, if any. -->
     <p:input port="parameters" kind="parameter"/>
     
@@ -10,7 +16,6 @@
     
     <!-- p:load is simply a call to read and parse an XML document into the pipeline.   -->
     <p:load name="books-in" href="books.xml"/>
-
 
     <p:xslt>
         <p:input port="stylesheet">
@@ -31,6 +36,5 @@
     </p:xslt>
     
     <p:store href="books.json" method="text"/>
-    
     
 </p:declare-step>
