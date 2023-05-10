@@ -100,11 +100,13 @@ Invoke the bash script like this:
 
 This XProc has ports designated `books` (an XML file listing the books) input, and for output, two ports, `library` for the XML, and `jsonized` for the JSON version.
 
-These are declared at the top of the XProc using `p:input` and `p:output`. Note how there needs to be a bit of finessing to convince XProc to emit raw JSON results. (Keeping serialization settings next to the output port to which they apply is a design decision.) Also, whitespace and formatting in the outputs may not yet be ideal -- another topic (there being ways to ameliorate this).
+Note that in this case, we are providing `books2.xml` as input, for purposes of testing against something other than `books.xml` (which also works).
+
+The ports are declared at the top of the XProc using `p:input` and `p:output`. Note how there needs to be a bit of finessing to convince XProc to emit raw JSON results. (Keeping serialization settings next to the output port to which they apply is a design decision.) Also, whitespace and formatting in the outputs may not yet be ideal -- another topic (there being ways to ameliorate this).
 
 ### Solution 3: Combining the phases in sequence instead of in parallel
 
-This is neater and arguably more efficient. It takes advantage of the fact that the first process doesn't actually modify anything, so the second process might as well accept its results as inputs.
+[solution3.xpl](solution3.xpl) is neater and arguably more efficient. It takes advantage of the fact that the first process doesn't actually modify anything, so the second process might as well accept its results as inputs.
 
 Of course whether this is actually better or worse depends on the situation. Given how XProc can define ports for any intermediate results as well as final results, executing a simple pipeline in sequence, while capturing any or all results along the way, is a natural design.
 
@@ -131,9 +133,9 @@ Method 1 basically amounts to treating XSLT as a general-purpose functional lang
 
 ### Solution 5: An all-XProc approach
 
-XSLT can be embedded in XProc, and 'blue' can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc with no external XSLTs or other dependencies.
+As shown in [solution5.xpl](solution5.xpl), XSLT can be embedded in XProc, and `p:xslt[p:input/p:document/@href='lib-wrapper.xsl']` can be replaced with XProc steps other than `p:xslt`. So we can make standalone XProc with no external XSLTs or other dependencies.
 
-Additionally to providing some interesting and useful syntax, the XSLT in this  example differs in a couple of important respects from [json-mapper.xsl](json-mapper.xsl) - it has been "hardened" so as not to be as tolerant of 'garbage' (or more generally, unexpected and unspecified) inputs. Compare and test by probing and running the code.
+Additionally to providing some interesting and useful syntax, the XSLT embedded in this example differs in a couple of important respects from [json-mapper.xsl](json-mapper.xsl) - it has been "hardened" so as not to be as tolerant of 'garbage' (or more generally, unexpected and unspecified) inputs. Compare and test by probing and running the code, for example by adding new element types (or violating namespace contracts) in a source document XML.
 
 ### Solution 6: XProc 3.0
 
